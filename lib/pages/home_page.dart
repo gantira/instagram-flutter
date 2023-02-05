@@ -1,10 +1,17 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:instagram_flutter/models/content_model.dart';
 import 'package:instagram_flutter/widgets/bubble_story.dart';
 import 'package:instagram_flutter/widgets/user_post.dart';
 
-class HomePage extends StatelessWidget {
-  HomePage({super.key});
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
 
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
   final List users = [
     'Anisa',
     'Hasan',
@@ -15,6 +22,31 @@ class HomePage extends StatelessWidget {
     'Bahri',
     'Erwin'
   ];
+
+  final String dataUrl =
+      "https://pixabay.com/api/?key=26795897-2d353a34f28d9ece9349ee359&q=world&image_type=photo&pretty=true";
+
+  Future<List<Content>> getListContent() async {
+    final response = await Dio().get(dataUrl);
+    final dataModel =
+        ContentModel.fromJson(response.data as Map<String, dynamic>);
+    return dataModel.listContent;
+  }
+
+  List<Content> listContent = [];
+
+  bool _isLoading = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _isLoading = true;
+    getListContent().then((result) {
+      listContent = result;
+      _isLoading = false;
+      setState(() {});
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -74,9 +106,10 @@ class HomePage extends StatelessWidget {
             child: ListView.builder(
               itemBuilder: (context, index) {
                 return UserPost(
-                  name: users[index],
+                  content: listContent[index],
                 );
               },
+              itemCount: listContent.length,
             ),
           )
         ],

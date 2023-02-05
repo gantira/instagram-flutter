@@ -1,15 +1,15 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
+
+import 'package:instagram_flutter/models/content_model.dart';
 
 class UserPost extends StatelessWidget {
   const UserPost({
     Key? key,
-    required this.name,
+    required this.content,
   }) : super(key: key);
 
-  final String name;
+  final Content content;
 
   @override
   Widget build(BuildContext context) {
@@ -25,15 +25,14 @@ class UserPost extends StatelessWidget {
                 children: [
                   CircleAvatar(
                     radius: 20,
-                    backgroundImage:
-                        NetworkImage('https://i.pravatar.cc/100?u=$name'),
+                    backgroundImage: NetworkImage(content.userImageUrl),
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(
                       horizontal: 10,
                     ),
                     child: Text(
-                      name,
+                      content.user,
                       style: const TextStyle(
                         fontWeight: FontWeight.bold,
                       ),
@@ -54,7 +53,7 @@ class UserPost extends StatelessWidget {
         SizedBox(
           height: 300,
           child: Image.network(
-            'https://picsum.photos/600/300?random=$name',
+            content.largeImageUrl,
             fit: BoxFit.cover,
           ),
         ),
@@ -79,20 +78,10 @@ class UserPost extends StatelessWidget {
             vertical: 4,
           ),
           child: Row(
-            children: const [
-              Text('Like by '),
+            children: [
               Text(
-                'rozay ',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              Text(' and '),
-              Text(
-                'others ',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                ),
+                '${content.likes} likes ',
+                style: const TextStyle(fontWeight: FontWeight.bold),
               ),
             ],
           ),
@@ -102,18 +91,16 @@ class UserPost extends StatelessWidget {
             horizontal: 16,
           ),
           child: RichText(
-            text: const TextSpan(
-              style: TextStyle(color: Colors.black),
+            text: TextSpan(
+              style: const TextStyle(color: Colors.black),
               children: [
-                TextSpan(
+                const TextSpan(
                   text: 'kepala_sekolah ',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                TextSpan(
-                    text:
-                        'Ayo anak anak masuk kelas, sudah waktunya belajar..'),
+                TextSpan(text: content.tags),
               ],
             ),
           ),
