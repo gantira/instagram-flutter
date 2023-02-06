@@ -104,9 +104,9 @@ class UserPost extends StatelessWidget {
             text: TextSpan(
               // style: const TextStyle(color: Colors.black),
               children: [
-                const TextSpan(
-                  text: 'kepala_sekolah ',
-                  style: TextStyle(
+                TextSpan(
+                  text: '${content.user} ',
+                  style: const TextStyle(
                     fontWeight: FontWeight.bold,
                   ),
                 ),
