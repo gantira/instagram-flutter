@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:instagram_flutter/pages/home_page.dart';
 
 class MainPage extends StatefulWidget {
@@ -67,27 +68,52 @@ class _MainPageState extends State<MainPage> {
         onTap: _onTap,
         items: [
           BottomNavigationBarItem(
-            icon: Icon(_selectedIndex == 0 ? Icons.home : Icons.home_outlined),
+            // icon: Icon(_selectedIndex == 0 ? Icons.home : Icons.home_outlined),
+            icon: SvgPicture.asset(
+              'assets/icons/ic_home.svg',
+              color: Colors.white,
+            ),
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(
-                _selectedIndex == 1 ? Icons.search : Icons.search_outlined),
+            // icon: Icon(
+            //     _selectedIndex == 1 ? Icons.search : Icons.search_outlined),
+            icon: SvgPicture.asset(
+              'assets/icons/ic_search.svg',
+              color: Colors.white,
+            ),
             label: 'Search',
           ),
           BottomNavigationBarItem(
-            icon: Icon(_selectedIndex == 2
-                ? Icons.video_call
-                : Icons.video_call_outlined),
+            // icon: Icon(_selectedIndex == 2
+            //     ? Icons.video_call
+            //     : Icons.video_call_outlined),
+            icon: SvgPicture.asset(
+              'assets/icons/ic_reels.svg',
+              color: Colors.white,
+            ),
             label: 'Reels',
           ),
           BottomNavigationBarItem(
-            icon: Icon(_selectedIndex == 3 ? Icons.shop : Icons.shop_outlined),
+            // icon: Icon(_selectedIndex == 3 ? Icons.shop : Icons.shop_outlined),
+            icon: SvgPicture.asset(
+              'assets/icons/ic_shop.svg',
+              color: Colors.white,
+            ),
             label: 'Shop',
           ),
-          BottomNavigationBarItem(
-            icon:
-                Icon(_selectedIndex == 4 ? Icons.person : Icons.person_outline),
+          const BottomNavigationBarItem(
+            // icon:
+            //     Icon(_selectedIndex == 4 ? Icons.person : Icons.person_outline),
+            icon: CircleAvatar(
+              radius: 13,
+              backgroundColor: Colors.white,
+              child: CircleAvatar(
+                radius: 12,
+                backgroundImage:
+                    NetworkImage('https://i.pravatar.cc/150?img=10'),
+              ),
+            ),
             label: 'Account',
           ),
         ],

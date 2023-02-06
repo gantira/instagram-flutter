@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:instagram_flutter/models/content_model.dart';
 
@@ -63,12 +64,21 @@ class UserPost extends StatelessWidget {
             vertical: 6,
           ),
           child: Row(
-            children: const [
-              Icon(Icons.favorite_border),
-              SizedBox(width: 10),
-              Icon(Icons.chat_bubble_outline),
-              SizedBox(width: 10),
-              Icon(Icons.send_outlined),
+            children: [
+              SvgPicture.asset(
+                'assets/icons/ic_favorite.svg',
+                color: Colors.white,
+              ),
+              const SizedBox(width: 16),
+              SvgPicture.asset(
+                'assets/icons/ic_comment.svg',
+                color: Colors.white,
+              ),
+              const SizedBox(width: 16),
+              SvgPicture.asset(
+                'assets/icons/ic_send.svg',
+                color: Colors.white,
+              ),
             ],
           ),
         ),
