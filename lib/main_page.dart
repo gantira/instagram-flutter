@@ -62,7 +62,7 @@ class _MainPageState extends State<MainPage> {
         showSelectedLabels: false,
         showUnselectedLabels: false,
         iconSize: 35,
-        selectedItemColor: Colors.black,
+        selectedItemColor: Colors.grey,
         currentIndex: _selectedIndex,
         onTap: _onTap,
         items: [

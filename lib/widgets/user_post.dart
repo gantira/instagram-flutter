@@ -92,7 +92,7 @@ class UserPost extends StatelessWidget {
           ),
           child: RichText(
             text: TextSpan(
-              style: const TextStyle(color: Colors.black),
+              // style: const TextStyle(color: Colors.black),
               children: [
                 const TextSpan(
                   text: 'kepala_sekolah ',
@@ -112,7 +112,7 @@ class UserPost extends StatelessWidget {
           ),
           child: Text(
             'View all commenets',
-            style: TextStyle(color: Colors.black54),
+            // style: TextStyle(color: Colors.black54),
           ),
         ),
         const Padding(
@@ -123,7 +123,7 @@ class UserPost extends StatelessWidget {
           child: Text(
             '17 hours ago',
             style: TextStyle(
-              color: Colors.black54,
+              // color: Colors.black54,
               fontSize: 10,
             ),
           ),
